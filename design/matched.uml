@@ -1,0 +1,39 @@
+@startuml
+actor "User" as User
+
+box "Dispatch Simulator"
+participant "Console" as CS
+participant "Controller" as CT
+participant "Order Generator" as OG
+participant "Prepare Order" as PO
+participant "Collect and Assign prepared Orders" as CAO
+participant "Courier get and send Orders" as CO
+participant "Analysis Performance" as AP
+endbox
+
+autonumber "<b>[0]"
+
+User -> CS: Type console commands
+CS -> CT: User input {strategy, parameters}
+activate CT
+CT -> CT: Initialize and start simulator
+deactivate CT
+activate OG
+OG -> OG: Generator Orders
+OG -> PO: Unprepared Orders
+deactivate OG
+activate PO
+PO ->PO: Prepare Orders
+PO -> CAO: Prepared Orders
+deactivate PO
+activate CAO
+CAO -> CAO: Collect prepared Orders
+CAO -> CO: Send order to matched Courier
+deactivate CAO
+activate CO
+CO -> CO: Courier pick up orders and send it
+CO -> AP: Send Order time information
+deactivate CO
+AP -> CS: Performance analysis result
+CS -> User: Check performance analysis result
+@enduml

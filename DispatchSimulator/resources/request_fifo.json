@@ -1,0 +1,4 @@
+{
+  "mode": "FIFO",
+  "orderJsonPath": "json/dispatch_orders.json"
+}

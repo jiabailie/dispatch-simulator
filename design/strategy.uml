@@ -1,0 +1,32 @@
+@startuml
+actor "User" as User
+participant "Order Generator" as OG
+participant "Chef" as CH
+participant "Courier" as CO
+participant "Analyst" as A
+
+autonumber "<b>[0]"
+
+User -> OG: Start simulator
+
+activate A
+loop Process Orders
+  activate OG
+    activate CO
+      activate CH
+        OG -> CH: Assign Chef to prepare
+        CH -> CH: Prepare order
+        OG -> CO: Assign Courier to pick up
+        CO -> CO: Arrival
+        CO -> CH: Wait specific order
+        CH -> CO: Pick up prepared order
+        A -> CH: Collect data
+        A -> CO: Collect data
+      deactivate CH
+    deactivate CO
+  deactivate OG
+end
+
+A -> User: Display analysis result
+deactivate A
+@enduml
