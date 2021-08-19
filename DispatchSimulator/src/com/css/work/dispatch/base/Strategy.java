@@ -6,6 +6,7 @@ import static com.css.work.constant.Constant.GENERATE_ORDERS_SLEEP_ELAPSE;
 import com.css.work.dispatch.Analyst;
 import com.css.work.model.Order;
 import lombok.AllArgsConstructor;
+import lombok.NonNull;
 import lombok.SneakyThrows;
 import lombok.extern.log4j.Log4j;
 
@@ -44,5 +45,5 @@ public abstract class Strategy implements Runnable {
         threadPoolExecutor.shutdown();
     }
 
-    public abstract void simulate(final Order order);
+    public abstract void simulate(@NonNull final Order order);
 }

@@ -42,7 +42,7 @@ public class MatchedImpl extends Strategy {
     }
 
     @Override
-    public void simulate(final Order order) {
+    public void simulate(@NonNull final Order order) {
         order.setOrderCreateTime(new Date());
         log.info(String.format("Order received: %s", order.getId()));
 
