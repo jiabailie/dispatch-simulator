@@ -8,6 +8,7 @@ Create one system to simulate the the fulfillment of delivery orders for a kitch
 
 * **Matched**:  a courier is dispatched for a specific order and may only pick up that order.
 * **First-in-first-out (FIFO)**: a courier picks up the next available order upon arrival. If there are multiple orders available, pick up an arbitrary order. If there are no available orders, couriers wait for the next available one. When there are multiple couriers waiting, the next available order is assigned to the earliest arrived courier.
+* **Batched**: each courier can picks up more than 1 orders for each time.
 * **Average food wait time**: the time between order ready and pickup.
 * **Average courier wait time**: the time between arrival and order pickup.
 
@@ -69,3 +70,5 @@ COURIER_ARRIVAL_MAX = 15
 COURIER_ARRIVAL_MIN = 3
 Arrival_Time = Math.random() * (COURIER_ARRIVAL_MAX - COURIER_ARRIVAL_MIN + 1) + COURIER_ARRIVAL_MIN
 ```
+### 5.3 Batch strategy
+Put arrival couriers in two queues, one is working queue, and the other one is waitting queue. Couriers which are in working queue can continue picking up orders until they can deliver with full capacity. On the other hand, all new arrived Couriers will be put into waitting queue, when some Courier is being poped from working queue, the system will get the earliest arrived Courier in waitting queue and put it into working queue.
