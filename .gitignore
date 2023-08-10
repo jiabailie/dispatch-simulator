@@ -28,3 +28,5 @@ hs_err_pid*
 # IDE file
 *.idea
 */out
+json/
+out/
