@@ -168,4 +168,4 @@ Average Courier Wait Time = 2303 ms
 
 See:
 
-- [DispatchSimulator Design.md](/Users/yangruiguo/Documents/dispatch-simulator/DispatchSimulator%20Design.md)
+- [DispatchSimulator Design.md](DispatchSimulator%20Design.md)
