@@ -13,8 +13,10 @@ import com.muyao.work.model.SimulateMode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.TimeZone;
 
 public class UtilsTests {
     private final Utils utils;
@@ -26,7 +28,9 @@ public class UtilsTests {
     public void dateToFormatStringTests() {
         final Date date = new Date(1629095723043L);
         final String actualDateStr = utils.dateToFormatString(date);
-        final String expectedDateStr = "2021-08-16 14:35:23";
+        final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        dateFormat.setTimeZone(TimeZone.getDefault());
+        final String expectedDateStr = dateFormat.format(date);
         assertThat(actualDateStr).isEqualTo(expectedDateStr);
     }
 
